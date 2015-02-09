@@ -34,7 +34,7 @@
 (define (new-good-enough? guess oldguess) (< (abs (- guess oldguess)) (* guess 0.0001)))
 
 ;Next we define a new square root method which implements the change
-(define (new-sqrt-iter guess oldguess x) (if (new-good-enough? guess oldguess) guess (sqrt-iter (improve guess x) x)))
+(define (new-sqrt-iter guess oldguess x) (if (new-good-enough? guess oldguess) guess (new-sqrt-iter (improve guess x) guess x)))
 
 ;Because the new tolerance is relative to the guess and not the square, it doesn't face the same precision problems
 ;when evaluating very large and very small squares
