@@ -10,11 +10,17 @@
 ;progressively smaller coins, you can recursively find the ways  each denomination is changed from other denominations
 ;and add that to a running total until you've hit your original value
 
-;Substitution
-(cc 100 5)
-(cc (+ (cc 100 4) (cc 50 5))
-(cc (+ (cc (+ cc 100 3)) (+ (cc 50 4) (cc 25 4))))
+;Substitution - change 10 cents with pennies and nickles
+(cc 10 2)
+(cc (+ (cc 10 1) (cc 5 1)))
+(cc (+ (+ (cc 10 0) (cc 9 1)) (+ (cc 4 0) (cc 4 1))))
+(cc (+ (+ 0 (+ (cc 9 0) (cc 8 1)) (+ 0 (+ cc (4 0) (cc 3 1))))))
 ;...etc
+(3)
+
+;Remember when a recursive procedure returns a fixed value, say 1, as a part of a degenerate condition
+;then the procedure will end up getting the value you expect (3 in our case) by calling itself the correct number of times
+;and therefore stacking the fixed value that many times (assuming the recursive operation is addition as above)
 
 
 
